@@ -55,6 +55,11 @@ class Simulation:
         
     def sim(self):
         score = 0
+
+        #! ODDS TO CONSIDER: 
+            #? TAKING A MID RANGE SHOT
+            #? TAKING A THREE
+            #? 
         while score < self.scoreLimit:
             break
 

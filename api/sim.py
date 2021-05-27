@@ -25,28 +25,35 @@ class Simulation:
             if self.player1.ball == False:
                 c = random.randrange(101)
                 if c < self.player1.tp * 100:
+                    print(self.player1.name + ' made the shot')
                     self.outcomeQueue.append(self.player1.name + ' made the shot')
                     shot = True
                     self.player1.ball = True
                     ballFirst = 1
                 else:
+                    print(self.player1.name + ' shot and missed')
                     self.outcomeQueue.append(self.player1.name + ' shot and missed')
             time.sleep(1)
             # Player 2 shoots for ball - 1 point percentage
             if self.player1.ball == False:
                 c = random.randrange(101)
                 if c < self.player2.tp * 100:
+                    print(self.player2.name + ' made the shot')
                     self.outcomeQueue.append(self.player2.name + ' made the shot')
                     shot = True
                     self.player2.ball = True
                     ballFirst = 2
                 else:
+                    print(self.player2.name + ' shot and missed')
                     self.outcomeQueue.append(self.player2.name + ' shot and missed')
+                time.sleep(1)
             
         if ballFirst is 1:
+            print(self.player1.name + ' gets ball first')
             self.outcomeQueue.append(self.player1.name + ' gets ball first')
             self.player1.ball = True
         else:
+            print(self.player2.name + ' gets ball first')
             self.outcomeQueue.append(self.player2.name + ' gets ball first')
             self.player2.ball = True
 

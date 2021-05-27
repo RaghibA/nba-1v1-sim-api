@@ -64,10 +64,24 @@ class Simulation:
     #! Simulate game
     def sim(self):
         score = 0
-
+        player1threeAttempt = self.player1.threePointsMade/self.player1.fieldGoalsTaken
+        player2threeAttempt = self.player2.threePointsMade/self.player2.fieldGoalsTaken
         #! ODDS TO CONSIDER: 
             #? TAKING A MID RANGE SHOT
             #? TAKING A THREE
+        if self.player1.ball == True:
+            c = random.randrange(101)
+            if c < player1threeAttempt * 100:
+                print(self.player1.name + ' shot a 3-pointer')
+            else:
+                print(self.player1.name + ' shot a 2-pointer')
+
+        if self.player2.ball == True:
+            c = random.randrange(101)
+            if c < player2threeAttempt * 100:
+                print(self.player2.name + ' shot a 3-pointer')
+            else:
+                print(self.player2.name + ' shot a 2-pointer')
             #? 
         while score < self.scoreLimit:
             break

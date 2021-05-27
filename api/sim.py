@@ -25,7 +25,7 @@ class Simulation:
                 break
             if self.player1.ball == False:
                 c = random.randrange(101)
-                if c < self.player1.tp * 100:
+                if c < self.player1.threePointPercentage * 100:
                     print(self.player1.name + ' made the shot')
                     self.outcomeQueue.append(self.player1.name + ' made the shot')
                     shot = True
@@ -38,7 +38,7 @@ class Simulation:
             # Player 2 shoots for ball - 1 point percentage
             if self.player1.ball == False:
                 c = random.randrange(101)
-                if c < self.player2.tp * 100:
+                if c < self.player2.threePointPercentage * 100:
                     print(self.player2.name + ' made the shot')
                     self.outcomeQueue.append(self.player2.name + ' made the shot')
                     shot = True
@@ -62,13 +62,8 @@ class Simulation:
             self.player1, self.player2 = self.player2, self.player1
         
     #! Simulate game
-    def sim(self, p1, p2):
+    def sim(self):
         score = 0
-        player1 = p1
-        player2 = p2
-
-        if player1.ball == False:
-            player1, player2 = player2, player1
 
         #! ODDS TO CONSIDER: 
             #? TAKING A MID RANGE SHOT
@@ -80,3 +75,4 @@ class Simulation:
     #! Play game
     def play(self):
         self.__shootForBall()
+        self.sim()

@@ -63,28 +63,39 @@ class Simulation:
         
     #! Simulate game
     def sim(self):
-        score = 0
+        p1Score = 0
+        p2Score = 0
         player1threeAttempt = self.player1.threePointsMade/self.player1.fieldGoalsTaken
         player2threeAttempt = self.player2.threePointsMade/self.player2.fieldGoalsTaken
-        #! ODDS TO CONSIDER: 
-            #? TAKING A MID RANGE SHOT
-            #? TAKING A THREE
-        if self.player1.ball == True:
-            c = random.randrange(101)
-            if c < player1threeAttempt * 100:
-                print(self.player1.name + ' shot a 3-pointer')
-            else:
-                print(self.player1.name + ' shot a 2-pointer')
+        
+        #! Simulate Game
+        while p1Score <= self.scoreLimit or p2Score <= self.scoreLimit:
+            time.sleep(1)
+            if self.player1.ball == True:
+                c = random.randrange(101)
+                if c < player1threeAttempt * 100:
+                    print(self.player1.name + ' shot a 2-pointer')
+                    p1Score += 2
+                else:
+                    print(self.player1.name + ' shot a 1-pointer')
+                    p1Score += 1
 
-        if self.player2.ball == True:
-            c = random.randrange(101)
-            if c < player2threeAttempt * 100:
-                print(self.player2.name + ' shot a 3-pointer')
-            else:
-                print(self.player2.name + ' shot a 2-pointer')
-            #? 
-        while score < self.scoreLimit:
-            break
+            if self.player2.ball == True:
+                c = random.randrange(101)
+                if c < player2threeAttempt * 100:
+                    print(self.player2.name + ' shot a 2-pointer')
+                    p2Score += 2
+                else:
+                    print(self.player2.name + ' shot a 1-pointer')
+                    p2Score += 1
+
+            print(f'{self.player1.name}: {p1Score}')
+            print(f'{self.player2.name}: {p2Score}')
+            print()
+            self.player1.ball, self.player2.ball = self.player2.ball, self.player1.ball
+
+            if p1Score >= 11 or p2Score >= 11:
+                break
 
     #! Play game
     def play(self):

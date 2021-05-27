@@ -10,6 +10,7 @@ class Simulation:
         self.outcomeQueue = [] # allows us to either iterate over the outcomes of 
                                 # each POS, or just jump to the final result
 
+    #! Shoot for ball
     def __shootForBall(self):
         # players take turn shooting threes to see who gets the first possession
         ballFirst = -1
@@ -60,6 +61,7 @@ class Simulation:
         if self.player1.ball != True:
             self.player1, self.player2 = self.player2, self.player1
         
+    #! Simulate game
     def sim(self):
         score = 0
 
@@ -70,5 +72,6 @@ class Simulation:
         while score < self.scoreLimit:
             break
 
+    #! Play game
     def play(self):
         self.__shootForBall()

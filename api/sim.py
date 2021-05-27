@@ -62,8 +62,13 @@ class Simulation:
             self.player1, self.player2 = self.player2, self.player1
         
     #! Simulate game
-    def sim(self):
+    def sim(self, p1, p2):
         score = 0
+        player1 = p1
+        player2 = p2
+
+        if player1.ball == False:
+            player1, player2 = player2, player1
 
         #! ODDS TO CONSIDER: 
             #? TAKING A MID RANGE SHOT

@@ -86,7 +86,9 @@ class Simulation:
         #! Simulate Game
         while p1Score <= self.scoreLimit or p2Score <= self.scoreLimit:
             print(ct)
-            time.sleep(2) # delay sim results
+            
+            # sleep disabled for testing purposes
+            #time.sleep(2) # delay sim results
 
             # PLAYER 1 SIMULATION
             if self.player1.ball == True:

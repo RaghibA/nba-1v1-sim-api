@@ -1,6 +1,6 @@
 class player:
     def __init__(self, name, fieldGoalPercentage, threePointPercentage, 
-        fieldGoalsTaken, threePointsMade, rebounds, blocks, steals):
+        fieldGoalsTaken, threePointsMade, rebounds, blocks, steals, height, defenseRating):
         self.ball = False
         self.simPoints = 0
 
@@ -12,3 +12,5 @@ class player:
         self.rebounds = rebounds
         self.blocks = blocks
         self.steals = steals
+        self.height = height
+        self.defenseRating = defenseRating

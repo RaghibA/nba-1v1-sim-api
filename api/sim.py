@@ -10,6 +10,16 @@ class Simulation:
         self.outcomeQueue = [] # allows us to either iterate over the outcomes of 
                                 # each POS, or just jump to the final result
 
+    #! Adjusted Mid-range percentage
+    def __midrange(self) -> bool:
+        # use player stats to calculate the probability the player taking a mid range shot makes it
+        return False
+
+    #! Adjusted 3p shot percentage
+    def __threepoint(self) -> bool:
+        # use player stats to calculate the probability the player taking a three point shot makes it
+        return False
+
     #! Shoot for ball
     def __shootForBall(self):
         # players take turn shooting threes to see who gets the first possession

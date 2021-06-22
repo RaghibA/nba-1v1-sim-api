@@ -1,15 +1,20 @@
 const express = require('express')
+const cors = require('cors')
+
 const chalk = require('chalk')
 
-
+// Import Router
+const simRouter = require('./routers/sim-router')
 
 // INIT Express app
 const app = express()
-const port = process.env.PORT || 4040
+app.use(cors)
+
+const port = process.env.PORT || 3000
 const apiURL = 'localhost'
 
 app.use(express.json())
-// TODO: Import router
+app.use(simRouter)
 
 // Listen for connection
 app.listen(port, apiURL, () => {

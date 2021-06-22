@@ -10,5 +10,7 @@ const playerSchema = new mongoose.Schema({
   pointsPerGame: {
     type: Number
   }
-  // ... Add every attribute required for player model
+  // TODO: Add attributes required for player model
 })
+
+module.exports = playerSchema

@@ -10,11 +10,10 @@ const simGame = (playerOneId, playerTwoId, callback) => {
 
   // TODO: Import players from database
   
-  //! DUMMY DATA
+  //? DUMMY DATA
   let player1 = new player('LeBron James', 50.4, 34.5, 19.5, 1.5, 7.4, .7, 1.6, 206, 103.5)
   let player2 = new player('Luka Dončić', 45.7, 33.1, 19.1, 2.7, 8.4, .4, 1, 201, 110)
   
-  // TODO: Implement simulation logic
   // Simulate game to 11
   let p1Score = 0
   let p2Score = 0

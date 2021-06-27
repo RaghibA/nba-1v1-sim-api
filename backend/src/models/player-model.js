@@ -1,16 +1,40 @@
 const mongoose = require('mongoose')
 
 const playerSchema = new mongoose.Schema({
-  name: {
+  player_name: {
     type: String
   },
-  age: {
+  player_id: {
     type: Number
   },
-  pointsPerGame: {
+  field_goal_pct: {
+    type: Number
+  },
+  three_pt_pct: {
+    type: Number
+  },
+  field_goal_taken: {
+    type: Number
+  },
+  three_pt_made: {
+    type: Number
+  },
+  rebounds: {
+    type: Number
+  },
+  block_pct: {
+    type: Number
+  },
+  steal_pct: {
+    type: Number
+  },
+  height: {
+    type: Number
+  },
+  def_rating: {
     type: Number
   }
-  // TODO: Add attributes required for player model
 })
 
-module.exports = playerSchema
+const PlayerModel = mongoose.model('PlayerModel', playerSchema)
+module.exports = PlayerModel

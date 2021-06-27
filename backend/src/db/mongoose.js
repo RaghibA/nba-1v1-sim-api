@@ -11,4 +11,4 @@ mongoose.connect('mongodb+srv://user:pass1234@bball1v1.i5ahj.mongodb.net/myFirst
     } else {
         console.log(chalk.blue.inverse('Connected to MongoDB'))
     }
-})
+})   

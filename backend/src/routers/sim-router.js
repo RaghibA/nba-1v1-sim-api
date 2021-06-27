@@ -13,7 +13,7 @@ router.get('/sim/:p1/:p2', async (req, res) => {
   playerTwoId = req.params.p2
 
   // simulate game, then send results in response body
-  simGame(playerOneId, playerTwoId, (err, result) => {
+  simGame(1, 2, (err, result) => {
     if (err) {
       // Catch error
       res.status(500).send(err)

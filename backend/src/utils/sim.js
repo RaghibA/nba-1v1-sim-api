@@ -32,7 +32,7 @@ const simGame = (playerOneId, playerTwoId, callback) => {
     let shot = 0
     let madeShot = false
 
-    console.log(chalk.greenBright(p1Score + ' ' + p2Score))
+    // console.log(chalk.greenBright(p1Score + ' ' + p2Score))
     if (pos === 0) { // Player 1 Possesion
 
       let takeThree = simPercentages.takeThree(player1.three_pt_made, player1.field_goal_taken)

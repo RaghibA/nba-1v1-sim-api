@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const playerSchema = new mongoose.Schema({
+const Player = new mongoose.model('Player', {
   player_name: {
     type: String
   },
@@ -36,5 +36,5 @@ const playerSchema = new mongoose.Schema({
   }
 })
 
-const PlayerModel = mongoose.model('PlayerModel', playerSchema)
-module.exports = PlayerModel
+
+module.exports = Player

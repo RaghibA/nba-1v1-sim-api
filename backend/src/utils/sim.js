@@ -1,20 +1,24 @@
 require('../db/mongoose')
-const player = require('./player')
-const PlayerModel = require('../models/player-model')
+const playerObject = require('./player')
+const Player = require('../models/player-model')
 const simPercentages = require('./simPercentages')
-const e = require('express')
-const chalk = require('chalk')
 
 
-const simGame = (playerOneId, playerTwoId, callback) => {
+const simGame = async (playerOneId, playerTwoId, score, callback) => {
 
-  // TODO: Import players from database
-  
-  //? DUMMY DATA
-  let player1 = new player('LeBron James', 50.4, 34.5, 19.5, 1.5, 7.4, .7, 1.6, 206, 103.5)
-  let player2 = new player('Luka Dončić', 45.7, 33.1, 19.1, 2.7, 8.4, .4, 1, 201, 110)
-  
-  // Simulate game to 11
+  // Retrieve player stats from database
+  const p1 = await Player.findOne({ player_id: playerOneId })
+  const p2 = await Player.findOne({ player_id: playerTwoId })
+
+  let player1 = new playerObject(p1.player_name, p1.field_goal_pct, p1.three_pt_pct,
+    p1.field_goal_taken, p1.three_pt_made, p1.rebounds,
+    p1.block_pct, p1.steal_pct, p1.height, p1.def_rating)
+
+  let player2 = new playerObject(p2.player_name, p2.field_goal_pct, p2.three_pt_pct,
+    p2.field_goal_taken, p2.three_pt_made, p2.rebounds,
+    p2.block_pct, p2.steal_pct, p2.height, p2.def_rating)
+
+  // Simulate game to {score}
   let p1Score = 0
   let p2Score = 0
   let pos = Math.floor(Math.random() * 2); // Coin Flip for possesion
@@ -27,7 +31,7 @@ const simGame = (playerOneId, playerTwoId, callback) => {
     turns: []
   }
 
-  while (p1Score <= 11 || p2Score <= 11) {
+  while (p1Score <= score || p2Score <= score) {
     let swapPos = false
     let shot = 0
     let madeShot = false
@@ -113,7 +117,7 @@ const simGame = (playerOneId, playerTwoId, callback) => {
     }
     turn += 1 // Increment turn
           
-    if(p1Score >= 11 || p2Score >= 11) {break}
+    if(p1Score >= score || p2Score >= score) {break}
   }
 
   // Send results through callback

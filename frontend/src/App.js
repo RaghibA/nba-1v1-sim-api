@@ -1,38 +1,37 @@
-//import React from "react";
-import React, {useState, useEffect} from "react";
-function App() {
-  /*
- const [data, setData] = React.useState(null);
-
-  React.useEffect(() => {
-    fetch("http://localhost:4004/sim/1/2/11")
-      .then((res) => res.json())
-      //.then((data) => console.log(data));
-      .then((data) => setData(data.player1.name));
-    }, []);
-
-  return (
-    <div>
-          <p>{data}</p>
-   </div>
-  );
- */
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    fetch("https://bball-1v1.herokuapp.com/sim/1/2/11")
-      .then(res => {
-        if(res.ok) {
-          return res.json()
-        }
-      }).then(jsonRes => setData(jsonRes.turns))
-  })
-
-
-return (
-  <div>
-        {data.map(data => <div><li>{data.p1Score}</li>
-           <li>{data.p2Score}</li><br></br></div>)}
- </div>
-);}
-
- export default App;
+import React from "react";
+export default class App extends React.Component {
+  state = {
+    loading: true,
+    player1name: null,
+    player2name: null,
+    results: []
+  };
+  async componentDidMount() {
+    //const url = "http://localhost:4004/sim/1/2/11";
+    const url = "https://bball-1v1.herokuapp.com/sim/1/2/11";
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log(data);
+    this.setState({ player1name: data.player1.name});
+    this.setState({ player2name: data.player2.name});
+    this.setState({ results: data.turns, loading: false });
+  }
+  render() {
+    if (this.state.loading) {
+      return <div>loading...</div>;
+    }
+    if (!this.state.results.length) {
+      return <div>No turns played!</div>;
+    }
+    return (
+      <div>
+        {this.state.results.map(eachTurn => (
+          <div key={eachTurn.turn}>
+            <div>{this.state.player1name}: {eachTurn.p1Score}<br></br>{this.state.player2name}: {eachTurn.p2Score}</div>
+            <br></br>
+          </div>
+        ))}
+      </div>
+    );
+  }
+}

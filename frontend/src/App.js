@@ -27,7 +27,7 @@ export default class App extends React.Component {
       <div>
         {this.state.results.map(eachTurn => (
           <div key={eachTurn.turn}>
-            <div>{this.state.player1name}: {eachTurn.p1Score}<br></br>{this.state.player2name}: {eachTurn.p2Score}</div>
+            <div>Possession: {eachTurn.turn}<br></br>{this.state.player1name}: {eachTurn.p1Score}<br></br>{this.state.player2name}: {eachTurn.p2Score}</div>
             <br></br>
           </div>
         ))}

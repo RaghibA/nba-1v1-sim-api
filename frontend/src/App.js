@@ -19,7 +19,7 @@ function App() {
  */
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:4004/sim/1/2/11")
+    fetch("https://bball-1v1.herokuapp.com/sim/1/2/11")
       .then(res => {
         if(res.ok) {
           return res.json()

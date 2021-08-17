@@ -35,6 +35,7 @@ const simGame = async (playerOneId, playerTwoId, score, callback) => {
     let swapPos = false
     let shot = 0
     let madeShot = false
+    let rebound = -1
 
     // console.log(chalk.greenBright(p1Score + ' ' + p2Score))
     if (pos === 0) { // Player 1 Possesion
@@ -52,8 +53,14 @@ const simGame = async (playerOneId, playerTwoId, score, callback) => {
         else { // Attempt offensive rebound
           let rb = simPercentages.offensiveRebound(player1.rebounds, player1.height,
             player2.rebounds, player2.height)
-          if (rb === true) { swapPos = false }
-          else{ swapPos = true}
+          if (rb === true) {
+            swapPos = false
+            rebound = 1
+          }
+          else {
+            swapPos = true
+            rebound = 2
+          }
         } 
         
       } else { // Take 2 point shot
@@ -67,8 +74,14 @@ const simGame = async (playerOneId, playerTwoId, score, callback) => {
         else { // Attempt offensive rebound
           let rb = simPercentages.offensiveRebound(player1.rebounds, player1.height,
             player2.rebounds, player2.height)
-          if (rb === true) { swapPos = false }
-          else{ swapPos = true}
+          if (rb === true) {
+            swapPos = false
+            rebound = 1
+          }
+          else {
+            swapPos = true
+            rebound = 2
+          }
         } 
       }
 
@@ -87,8 +100,14 @@ const simGame = async (playerOneId, playerTwoId, score, callback) => {
         else { // Attempt offensive rebound
           let rb = simPercentages.offensiveRebound(player2.rebounds, player2.height,
             player1.rebounds, player1.height)
-          if (rb === true) { swapPos = false }
-          else{ swapPos = true}
+          if (rb === true) {
+            swapPos = false
+            rebound = 2
+          }
+          else {
+            swapPos = true
+            rebound = 1
+          }
         } 
         
       } else { // Take 2 point shot
@@ -102,14 +121,20 @@ const simGame = async (playerOneId, playerTwoId, score, callback) => {
         else { // Attempt offensive rebound
           let rb = simPercentages.offensiveRebound(player2.rebounds, player2.height,
             player1.rebounds, player1.height)
-          if (rb === true) { swapPos = false }
-          else{ swapPos = true}
+          if (rb === true) {
+            swapPos = false
+            rebound = 2
+          }
+          else {
+            swapPos = true
+            rebound = 1
+          }
         } 
       } // End Player 2 
     }
 
     //! Update simulation data
-    sim.turns.push({ turn, p1Score, p2Score, pos, shot, madeShot })
+    sim.turns.push({ turn, p1Score, p2Score, pos, shot, madeShot, rebound })
           
     if (swapPos === true) { // Change possesion 
       if (pos === 1) { pos = 0 }

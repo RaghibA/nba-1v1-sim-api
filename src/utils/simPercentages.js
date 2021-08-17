@@ -1,6 +1,4 @@
 //* Shooting odds adjusted for player stats
-const chalk = require('chalk')
-
 // Odds of a player taking a three-point shot
 function takeThree(threesMade, fgTaken) {
   const pct = (threesMade * 1.25)/ fgTaken
